@@ -1,5 +1,6 @@
 import Header from "./components/Header/Header";
-import Container from "./components/Container/Container";
+import Navigation from "./components/Navigation/Navigation";
+import Catalog from "./components/Catalog/Catalog";
 
 
 function App() {
@@ -8,10 +9,8 @@ function App() {
     <>
       <Header className="header__container"/>
       <main>
-        <nav>
-          <Container className="navigation__container"/>
-        </nav>
-        <section></section>
+        <Navigation className="navigation__container" />
+        <Catalog />
       </main>
       <footer></footer>
     </>
