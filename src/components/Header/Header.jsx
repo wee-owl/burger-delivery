@@ -2,14 +2,13 @@ import PropTypes from "prop-types";
 import Container from "../Container/Container";
 import logo from "../../assets/img/logo.svg";
 import style from "./Header.module.css";
-import classNames from "classnames";
 
 
 function Header({ className }) {
 
   return (
     <header className={style.header}>
-      <Container className={classNames(style.container, className)}>
+      <Container className={className}>
         <img className={style.header__logo} src={logo} alt="Логотип YourMeal" />
         <div className={style.header__wrapper}>
           <h1 className={style.header__title}>
