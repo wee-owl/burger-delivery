@@ -1,4 +1,3 @@
-// import PropTypes from "prop-types";
 import { goodsList } from "../../utils/goodsList";
 import Order from "../Order/Order";
 import Container from "../Container/Container";
@@ -7,7 +6,6 @@ import style from "./Catalog.module.css";
 
 
 function Catalog() {
-
   return (
     <section className={style.catalog}>
       <Container className={style.catalog__container}>
@@ -33,7 +31,3 @@ function Catalog() {
 }
 
 export default Catalog;
-
-// Catalog.propTypes = {
-//   className: PropTypes.string.isRequired,
-// };
