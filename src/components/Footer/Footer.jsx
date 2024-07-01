@@ -54,7 +54,7 @@ function Footer() {
           </div>
         </div>
       </Container>
-  </footer>
+    </footer>
   );
 }
 
