@@ -1,4 +1,3 @@
-//import PropTypes from "prop-types";
 import { orderList } from "../../utils/orderList";
 import OrderGoods from "../OrderGoods/OrderGoods";
 import style from "./Order.module.css";
@@ -37,12 +36,7 @@ function Order() {
         </div>
       </section>
     </div>
-
   );
 }
 
 export default Order;
-
-// Order.propTypes = {
-//   className: PropTypes.string.isRequired,
-// };
