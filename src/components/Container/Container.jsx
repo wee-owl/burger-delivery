@@ -15,6 +15,6 @@ function Container({ children, className }) {
 export default Container;
 
 Container.propTypes = {
-  children: PropTypes.object.isRequired,
-  className: PropTypes.string.isRequired,
+  children: PropTypes.node,
+  className: PropTypes.string,
 };
