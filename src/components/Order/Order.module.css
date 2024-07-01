@@ -1,5 +1,7 @@
 .order {
   position: relative;
+  min-height: 48px;
+  margin-bottom: 30px;
 }
 
 .order__wrapper {
@@ -66,24 +68,6 @@
 
 .order__list {
   margin-bottom: 13px;
-}
-
-.order__item {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  padding: 10px 0;
-  border-bottom: 1px solid #F2F2F3;
-}
-
-.order__item:first-child {
-  border-top: 1px solid #F2F2F3;
-}
-
-.order__image {
-  width: 64px;
-  height: 52px;
-  border-radius: 8px;
 }
 
 .order__total {
@@ -168,16 +152,11 @@
   .order__title {
     font-size: 24px;
   }
-  
 
   .order__count {
     width: 41px;
     height: 20px;
     font-size: 12px;
-  }
-
-  .order__item  {
-    padding: 15px 0;
   }
 
   .order__wrap_list {
