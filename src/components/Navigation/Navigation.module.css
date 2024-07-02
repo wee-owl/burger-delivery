@@ -9,10 +9,10 @@
 
 .navigation__list {
   display: flex;
-  padding: 0 calc((100vw / 2) - (var(--container) / 2));
   overflow-x: auto;
   overflow-y: hidden;
   column-gap: 8px;
+  justify-content: space-between;
 }
 
 .navigation__button {
