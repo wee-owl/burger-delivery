@@ -1,18 +1,40 @@
-import { createSlice } from "@reduxjs/toolkit";
-import { initialState } from "../../utils/initialState";
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { API_URL, POSTFIX } from "../../const";
 
+
+const initialState = {
+  category: [],
+  error: "",
+  activeCategory: 0,
+};
+
+export const categoryRequestAsync = createAsyncThunk(
+  "category/fetch", () => fetch(`${API_URL}${POSTFIX}/category`)
+    .then(req => req.json())
+    .catch(error => ({ error }))
+);
 
 const categorySlice = createSlice({
   name: "category",
-  initialState: initialState,
+  initialState,
   reducers: {
     changeCategory(state, action) {
-      console.log("state", state);
-      console.log("action", action);
-
       state.activeCategory = action.payload.indexCategory
     }
-  }
+  },
+  extraReducers: (builder) => {
+    builder
+      .addCase(categoryRequestAsync.pending, (state) => {
+        state.error = "";
+      })
+      .addCase(categoryRequestAsync.fulfilled, (state, action) => {
+        state.error = "";
+        state.category = action.payload;
+      })
+      .addCase(categoryRequestAsync.rejected, (state, action) => {
+        state.error = action.payload.error;
+      })
+    }
 });
 
 export const { changeCategory } = categorySlice.actions;
