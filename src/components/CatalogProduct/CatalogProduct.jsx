@@ -1,21 +1,22 @@
 import PropTypes from "prop-types";
+import { API_URL } from "../../const";
 import style from "./CatalogProduct.module.css";
 
 
-function CatalogProduct({ title }) {
+function CatalogProduct({ item }) {
   return (
     <article className={style.product}>
-      <img src="img/photo-5.jpg" alt={title} className={style.product__image} />
+      <img src={`${API_URL}/${item.image}`} alt={item.title} className={style.product__image} />
       <p className={style.product__price}>
-        689
+        {item.price}
         <span className={style.currency}>
         ₽
         </span>
       </p>
       <h3 className={style.product__title}>
-        <button className={style.product__detail}>{title}</button>
+        <button className={style.product__detail}>{item.title}</button>
       </h3>
-      <p className={style.product__weight}>520г</p>
+      <p className={style.product__weight}>{item.weight}г</p>
       <button className={style.product__add} type="button">Добавить</button>
     </article>
   );
@@ -24,5 +25,5 @@ function CatalogProduct({ title }) {
 export default CatalogProduct;
 
 CatalogProduct.propTypes = {
-  title: PropTypes.string.isRequired,
+  item: PropTypes.object.isRequired,
 };
