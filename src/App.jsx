@@ -7,7 +7,6 @@ import Footer from "./components/Footer/Footer";
 
 
 function App() {
-
   return (
     <Provider store={store}>
       <Header className="header__container"/>
