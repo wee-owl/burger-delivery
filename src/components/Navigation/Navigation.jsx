@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 import { useEffect } from "react";
+import { API_URL } from "../../utils/const";
 import { useDispatch, useSelector } from "react-redux";
-import { API_URL } from "../../const";
 import { categoryRequestAsync, changeCategory } from "../../store/category/categorySlice";
 import Container from "../Container/Container";
 import style from "./Navigation.module.css";
@@ -9,7 +9,7 @@ import classNames from "classnames";
 
 
 function Navigation({ className }) {
-  const { category, activeCategory } = useSelector((state) => state.category);
+  const { category, activeCategory } = useSelector(state => state.category);
   const dispatch = useDispatch();
 
   useEffect(() => {
