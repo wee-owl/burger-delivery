@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { API_URL, POSTFIX } from "../../const";
+import { API_URL, POSTFIX } from "../../utils/const";
 
 
 const initialState = {
@@ -22,7 +22,7 @@ const categorySlice = createSlice({
       state.activeCategory = action.payload.indexCategory
     }
   },
-  extraReducers: (builder) => {
+  extraReducers: builder => {
     builder
       .addCase(categoryRequestAsync.pending, (state) => {
         state.error = "";
