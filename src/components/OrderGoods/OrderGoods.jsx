@@ -1,24 +1,25 @@
 import PropTypes from "prop-types";
+import { API_URL } from "../../utils/const";
 import Count from "../Count/Count";
 import style from "./OrderGoods.module.css";
 
 
-function OrderGoods({title}) {
+function OrderGoods({ item }) {
   return (
     <li className={style.order__item}>
-      <img className={style.order__image} src="img/burger_1.jpg" alt={title} />
+      <img className={style.order__image} src={`${API_URL}/${item.image}`} alt={item.title} />
 
       <div className={style.goods}>
-        <h3 className={style.goods__title}>{title}</h3>
+        <h3 className={style.goods__title}>{item.title}</h3>
 
-        <p className={style.goods__weight}>512г</p>
+        <p className={style.goods__weight}>{item.weight}г</p>
 
-        <p className={style.goods__price}>1279
-          <span className={style.currency}>₽</span>
+        <p className={style.goods__price}>{item.price}
+          <span className={style.currency}>&nbsp;₽</span>
         </p>
       </div>
 
-      <Count count={1}/>
+      <Count count={item.count} id={item.id}/>
     </li>
   );
 }
@@ -26,5 +27,5 @@ function OrderGoods({title}) {
 export default OrderGoods;
 
 OrderGoods.propTypes = {
-  title: PropTypes.string.isRequired,
+  item: PropTypes.object.isRequired,
 };
