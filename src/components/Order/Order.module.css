@@ -92,6 +92,12 @@
   margin-bottom: 8px;
 }
 
+.order__submit:disabled {
+  color: #000000;
+  background: #F2F2F3;
+  cursor: not-allowed;
+}
+
 .order__apeal {
   display: flex;
   align-items: center;
