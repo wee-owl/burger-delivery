@@ -4,7 +4,6 @@ import classNames from "classnames";
 
 
 function Container({ children, className }) {
-
   return (
     <div className={classNames(style.container, className)}>
       {children}
