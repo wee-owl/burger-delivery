@@ -14,9 +14,8 @@ function Catalog() {
   const title = category[activeCategory]?.rus;
 
   useEffect(() => {
-    if (category.length) {
-      dispatch(productRequestAsync(category[activeCategory].title))
-    }
+    if (!category.length) return;
+    dispatch(productRequestAsync(category[activeCategory].title));
   }, [activeCategory, category, dispatch]);
 
 
@@ -26,17 +25,20 @@ function Catalog() {
         <Order />
         <div className={style.catalog__wrapper}>
           <h2 className={style.catalog__title}>{title}</h2>
-
           <div className={style.catalog__wrap_list}>
+          {
+            products.length ?
             <ul className={style.catalog__list}>
-              {
+              { 
                 products.map(item => (
                   <li className={style.catalog__item} key={item.id}>
                     <CatalogProduct item={item}/>
                   </li>
                 ))
               }
-            </ul>
+            </ul> :
+            <p>К сожалению товаров данной категории пока нет.</p>
+          }
           </div>
         </div>
       </Container>
