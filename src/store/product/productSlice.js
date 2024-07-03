@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { API_URL, POSTFIX } from "../../const";
+import { API_URL, POSTFIX } from "../../utils/const";
 
 
 const initialState = {
