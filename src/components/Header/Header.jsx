@@ -5,7 +5,6 @@ import style from "./Header.module.css";
 
 
 function Header({ className }) {
-
   return (
     <header className={style.header}>
       <Container className={className}>
