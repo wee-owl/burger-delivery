@@ -4,6 +4,7 @@ import { API_URL, POSTFIX } from "../../utils/const";
 
 const initialState = {
   products: [],
+  load: false,
   error: "",
 };
 
@@ -21,13 +22,16 @@ const productSlice = createSlice({
     builder
     .addCase(productRequestAsync.pending, (state) => {
       state.error = "";
+      state.load = true;
     })
     .addCase(productRequestAsync.fulfilled, (state, action) => {
       state.error = "";
+      state.load = false;
       state.products = action.payload;
     })
     .addCase(productRequestAsync.rejected, (state, action) => {
       state.error = action.payload.error;
+      state.load = false;
     })
   }
 });
