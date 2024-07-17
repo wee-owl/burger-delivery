@@ -6,6 +6,7 @@ const initialState = {
   category: [],
   error: "",
   activeCategory: 0,
+  loading: false,
 };
 
 export const categoryRequestAsync = createAsyncThunk(
@@ -19,20 +20,23 @@ const categorySlice = createSlice({
   initialState,
   reducers: {
     changeCategory(state, action) {
-      state.activeCategory = action.payload.indexCategory
+      state.activeCategory = action.payload.indexCategory;
     }
   },
   extraReducers: builder => {
     builder
       .addCase(categoryRequestAsync.pending, (state) => {
         state.error = "";
+        state.loading = true;
       })
       .addCase(categoryRequestAsync.fulfilled, (state, action) => {
         state.error = "";
         state.category = action.payload;
+        state.loading = false;
       })
       .addCase(categoryRequestAsync.rejected, (state, action) => {
         state.error = action.payload.error;
+        state.loading = false;
       })
     }
 });
