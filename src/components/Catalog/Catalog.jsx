@@ -8,8 +8,8 @@ import style from "./Catalog.module.css";
 
 
 function Catalog() {
-  const { products } = useSelector(state => state.product);
-  const { category, activeCategory } = useSelector(state => state.category);
+  const { products, load } = useSelector(state => state.product);
+  const { category, activeCategory, loading } = useSelector(state => state.category);
   const dispatch = useDispatch();
   const title = category[activeCategory]?.rus;
 
@@ -24,22 +24,32 @@ function Catalog() {
       <Container className={style.catalog__container}>
         <Order />
         <div className={style.catalog__wrapper}>
-          <h2 className={style.catalog__title}>{title}</h2>
-          <div className={style.catalog__wrap_list}>
-          {
-            products.length ?
-            <ul className={style.catalog__list}>
-              { 
-                products.map(item => (
-                  <li className={style.catalog__item} key={item.id}>
-                    <CatalogProduct item={item}/>
-                  </li>
-                ))
-              }
-            </ul> :
-            <p>К сожалению товаров данной категории пока нет.</p>
-          }
-          </div>
+
+        {
+          loading ?
+          <p>Загрузка</p> :
+          <>
+            <h2 className={style.catalog__title}>{title}</h2>
+            <div className={style.catalog__wrap_list}>
+            {
+              load ?
+              <p>Загрузка</p> :
+              products.length ?
+              <ul className={style.catalog__list}>
+                { 
+                  products.map(item => (
+                    <li className={style.catalog__item} key={item.id}>
+                      <CatalogProduct item={item}/>
+                    </li>
+                  ))
+                }
+              </ul> :
+              <p>К сожалению товаров данной категории пока нет.</p>
+            }
+            </div>
+          </>
+        }
+
         </div>
       </Container>
     </section>
