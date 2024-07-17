@@ -12,11 +12,13 @@ const initialState = {
 };
 
 export const lsmiddleware = store => next => action => {
-  if (next(action).type.startsWith("order/")) {
+  const nextAction = next(action);
+
+  if (nextAction.type.startsWith("order/")) {
     const orderList = store.getState().order.orderList;
     localStorage.setItem("order", JSON.stringify(orderList));
   }
-  return next(action);
+  return nextAction;
 };
 
 export const orderRequestAsync = createAsyncThunk(
@@ -34,12 +36,11 @@ const orderSlice = createSlice({
   initialState,
   reducers: {
     addProduct: (state, action) => {
-      const productOrderList = state.orderList.find(item => item.id === action.payload.id,);
+      const productOrderList = state.orderList.find(item => item.id === action.payload.id);
 
       if (productOrderList) {
-
         productOrderList.count += 1;
-        const productOrderGoods = state.orderGoods.find(item => item.id === action.payload.id,);
+        const productOrderGoods = state.orderGoods.find(item => item.id === action.payload.id);
         productOrderGoods.count = productOrderList.count;
         [state.totalCount, state.totalPrice] = calcTotal(state.orderGoods);
 
@@ -51,7 +52,6 @@ const orderSlice = createSlice({
       const productOrderList = state.orderList.find(item => item.id === action.payload.id);
 
       if (productOrderList && productOrderList.count > 1) {
-
         productOrderList.count -= 1;
         const productOrderGoods = state.orderGoods.find(item => item.id === action.payload.id);
         productOrderGoods.count = productOrderList.count;
@@ -60,7 +60,11 @@ const orderSlice = createSlice({
       } else {
         state.orderList = state.orderList.filter(item => item.id !== action.payload.id);
       }
-    }
+    },
+    clearOrder: (state) => {
+      state.orderList = [];
+      state.orderGoods = [];
+    },
   },
   extraReducers: builder => {
     builder
@@ -84,5 +88,5 @@ const orderSlice = createSlice({
   }
 });
 
-export const { addProduct, removeProduct } = orderSlice.actions;
+export const { addProduct, removeProduct, clearOrder } = orderSlice.actions;
 export default orderSlice.reducer;
