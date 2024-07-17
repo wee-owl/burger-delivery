@@ -1,6 +1,6 @@
 .footer {
   padding: 24px 0;
-  background-color: #FFFFFF;
+  background-color: #ffab08;
 }
 
 .footer__logo {
@@ -39,14 +39,15 @@
 }
 
 .footer__sn {
-  color: #FF7020;
+  color: #ffffff;
+  transition: color 0.3s ease-in-out;
 }
 
 .footer__phone:hover,
 .footer__phone:focus, 
 .footer__sn:hover,
 .footer__sn:focus {
-  color: #FFAB08;
+  color: #000000;
 }
 
 .footer__development {

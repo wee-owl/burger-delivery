@@ -1,5 +1,5 @@
 import Container from "../Container/Container";
-import logo from "../../assets/img/logo-o.svg";
+import logo from "../../assets/img/logo.svg";
 import style from "./Footer.module.css";
 
 
@@ -47,9 +47,9 @@ function Footer() {
           </address>
 
           <div className={style.footer__development}>
-            <p>© YouMeal, 2022</p>
+            <p>© YouMeal, 2024</p>
             <p>Design: <a href="#">Anastasia Ilina</a></p>
-            <p>Developer: <a href="mailto:maksim.leskin@methed.ru">Maksim Leskin</a></p>
+            <p>Developer: <a href="mailto:maksim.leskin@methed.ru">Elena Korobova</a></p>
           </div>
         </div>
       </Container>
