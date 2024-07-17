@@ -9,10 +9,10 @@
 
 .navigation__list {
   display: flex;
-  overflow-x: auto;
-  overflow-y: hidden;
-  column-gap: 8px;
-  justify-content: space-between;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
 }
 
 .navigation__button {
@@ -52,7 +52,7 @@
 
 @media (min-width: 768px) {
   .navigation__list {
-    column-gap: 12px;
+    gap: 12px;
   }
 }
 
@@ -63,7 +63,7 @@
   }
 
   .navigation__list {
-    column-gap: 24px;
+    gap: 24px;
   }
 
   .navigation__button {
